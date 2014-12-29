@@ -1,0 +1,108 @@
+0.How many different colors does each format support? 
+
+BMP supports over 4 billion colors. GIF supports 256 colors (8 bit GIF).
+JPEG supports 16 million colors (24 bit JPEG). PNG supports 16 million colors (24 bit PNG). 
+
+
+1.Which of these formats supports animation?  
+
+GIF supports animation.
+
+
+2.What’s the difference between lossy and lossless compression? 
+
+Lossy compression permantly removes data from the file that is being compressed to reduce file size, typically data that 
+will not be 'missed' or noticed by the user. This makes the file size smaller, but note that you cannot recover the full 
+file (the removed data) from the compressed lossy file. Lossless compression on the other hand retains all the file data 
+during compression, meaning that the user can compress file but then restore the file to its original/complete state and 
+full size. 
+
+
+3.Which of these formats is lossy-compressed? 
+
+JPEGs are an example of a lossy file format (which is why they are typically not print quality).
+
+
+4.What happens, technically speaking, when a file is deleted on a FAT file system? 
+
+FAT stands for File Allocation Table, and when a file is deleted from the computer it can more accuratly be described as 
+'forgoten'. The file is not actually deleted but the file address is removed from the computers memory and the address 
+where the file was is marked as available memory and new files can be writen over all or part of the old file. Technically, 
+this means we have a window of time to recover the deleted file by trying to trace its address. 
+
+
+5.What can someone like you do to ensure (with high probability) that files you delete cannot be recovered? 
+
+We can use Secure Deletion to ensure files cannot be recovered. This is the pracice of overwriting the file location on the 
+harddrive with all 0s, so even if someone was able to recover the address of the file, they would not be able to recover the file.
+
+
+6.What’s stdint.h? 
+
+stdint.h is a C header file that uses typedef to define exact width integers. Amongst other things this allows programmers 
+to write more portable code.     
+
+
+7.What’s the point of using uint8_t, uint32_t, int32_t, and uint16_t in a program? 
+
+Using uint indicates to the program that you want an integer of specific size/width, for example, uint8_t is an integer of 
+width (size) 8 bytes. In relations to BMP, this indicates the size of the pizel we desire.
+
+
+8.How many bytes is a BYTE, a DWORD, a LONG, and a WORD, respectively? (Assume a 32-bit architecture like the CS50 Appliance.) 
+
+BYTE is 1 bytes. DWORD is 4 bytes. LONG is 4 bytes. WORD is 2 bytes.
+
+
+9.What (in ASCII, decimal, or hexadecimal) must the first two bytes of any BMP file be? (Leading bytes used to identify 
+
+file formats (with high probability) are generally called "magic numbers.)" We use the first 2 bytes of a BMP file to 
+identify the BMP file type. We allocate 1 byte for 'B' and 1 byte for 'M' (in ASCII encoding). This is Ox4D42 in hexadecimal.
+
+
+10.What’s the difference between bfSize and biSize? 
+
+bfSize is the size (bytes) of the entire bitmap file. biSize is the size (bytes) of the BITMAPINFO structure.
+
+
+11.What does it mean if biHeight is negative?
+
+If biHeight is negative the 'start' or origin of the BMP is in the top left corner (as opposed to a positive biHeight 
+which starts in the botton left).
+
+
+12.What field in BITMAPINFOHEADER specifies the BMP’s color depth (i.e., bits per pixel)?
+
+biBitCount in the BITMAPINFOHEADER is what specifies the BMPs color depth.
+
+
+13.Why might fopen return NULL in copy.c:37?
+
+My guess is that fopen may return NULL because we cannot open file due to possibly that we are out of memory, or there is 
+a problem with the file path.
+
+
+14.Why is the third argument to fread always 1 in our code?
+
+Because we are only reading 1 element.
+
+
+15.What value does copy.c:70 assign padding if bi.biWidth is 3?
+
+3
+
+
+16.What does fseek do?
+
+fseek moves the position indicator from current position to a new position under a set of certain instructions, which in 
+our example is to scan over the padding to seek the next pixel.  
+
+
+17.What is SEEK_CUR?
+
+A constant that allows us to set an offset relative to the current position of the cursor eg offset of 5 will move reading point 5 to the right of cursor. 
+
+
+18.Whodunit?
+
+Milo Banana dun it.
